@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+
+<body>
+	<p>Hvor mange timer skal du flyve?</p>
+	<input type="text" id="timer">
+	<button>Klik og se dit CO2-forbrug</button>
+	<script>
+		document.querySelector("button").addEventListener("click", udregn);
+
+		function udregn() {
+			let timer = document.querySelector("#timer").value;
+			let co2 = timer * 109;
+			if (co2 < 100) {
+				console.log(`Du skal flyve ${timer} timer, og din rejse udleder ${co2} kg co2. Tæt på Thunberg!`);
+			} else if (co2 >= 100 && co2 < 200) {
+				console.log(`Du skal flyve ${timer} timer, og din rejse udleder ${co2} kg co2. Ja, ja, du behøver ikke melde dig ud af Å!`);
+			} else if (co2 >= 200 && co2 < 600) {
+				console.log(`Du skal flyve ${timer} timer, og din rejse udleder ${co2} kg co2. Det er godt for turismen i Nordeuropa!`);
+			} else {
+				console.log(`Du skal flyve ${timer} timer, og din rejse udleder ${co2} kg co2. Nå, vi kan jo altid kolonisere en anden planet...`);
+			}
+		}
+
+	</script>
+</body>
+
+</html>
