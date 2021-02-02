@@ -1,0 +1,40 @@
+img {
+	max-width: 48vw;
+	margin-right: 1vw;
+}
+
+article {
+	border: 1px solid black;
+	margin: 1vw;
+}
+
+h1 {
+	text-align: center;
+}
+
+h2 {
+	text-align: left;
+	margin: 1vw;
+}
+
+footer {
+	font-size: large;
+	text-align: center;
+	border-style: dotted;
+	border-color: aquamarine;
+	margin-top: 5vw;
+}
+
+main {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+}
+
+#artikel_1 {
+	grid-column: 1/2;
+}
+
+#artikel_2 {
+	grid-column: 2/2;
+}
