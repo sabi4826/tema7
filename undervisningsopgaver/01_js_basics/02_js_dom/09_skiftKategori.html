@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DOM-øvelse 4</title>
+	<style>
+		/*grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));*/
+		img {
+			max-width: 46vw;
+		}
+
+		article {
+			border: 1px solid black;
+			margin: 1vw;
+		}
+
+		h1 {
+			text-align: center;
+		}
+
+		h2 {
+			text-align: left;
+			margin: 1vw;
+		}
+
+		footer {
+			font-size: large;
+			text-align: center;
+			border-style: dotted;
+			border-color: aquamarine;
+			margin-top: 5vw;
+		}
+
+		main {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr;
+		}
+
+		#artikel_1 {
+			grid-column: 1/2;
+		}
+
+		#artikel_2 {
+			grid-column: 2/2;
+		}
+
+	</style>
+</head>
+
+<body>
+	<main>
+		<h1 id="titel">Titel</h1>
+		<br>
+		<h2>Undertitel</h2>
+		<article id="artikel_1">
+			<img src="billeder/mika-matin.jpg" alt="foto" id="foto">
+			<h3 id="h3">Artikel 1</h3>
+			<p id="tekst_1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi mollitia et cupiditate quaerat atque quasi iure sit dolore repellendus, consequuntur eaque odio, perspiciatis ipsam aliquam autem vitae quibusdam nihil voluptates.</p>
+		</article>
+		<article id="article_2">
+			<img src="billeder/tatiana-pavlova.jpg" alt="foto 2" id="foto_2">
+			<h3 id="h3_2">Artikel 2</h3>
+			<p id="tekst_2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi mollitia et cupiditate quaerat atque quasi iure sit dolore repellendus, consequuntur eaque odio, perspiciatis ipsam aliquam autem vitae quibusdam nihil voluptates.</p>
+		</article>
+	</main>
+	<footer>
+		Dette er en footer!
+	</footer>
+	<script>
+		document.addEventListener("DOMContentLoaded", start);
+
+		function start() {
+			document.removeEventListener("DOMContentLoaded", start);
+			console.log("DOM loadet");
+
+			//Ændr indhold med JS
+			const titel = document.querySelector("#titel");
+			titel.textContent = "Nyheder fra Danmark";
+			const h3 = document.querySelector("#h3");
+			h3.innerHTML = "<h3>Flere hipsters set i bjergene"
+			const tekst1 = document.querySelector("#tekst_1");
+			tekst1.innerHTML = "<p>Flere personer har rapporteret, at de gentagne gange har set hipsters i de høje bjerge mod nord. Hipsterne er blevet beskrevet som mænd med huer, fuldskæg og afslappet skovmandstøj."
+			const h3_2 = document.querySelector("#h3_2");
+			h3_2.textContent = "Tvillinger er trætte af kulden"
+			const tekst_2 = document.querySelector("#tekst_2");
+			tekst_2.innerHTML = "<p>Nu råber flere danske tvillinger op, da de er gevaldigt trætte af den pludselige vinterkulde. - Kulden er kommet bag på os, og vi fryser. Vores rullekravebluser er slet ikke varme nok!, fortæller Maria Hansen, der sammen med sin tvilling Trine Hansen står bag en underskriftindsamling.</p>"
+			document.querySelector("#foto").addEventListener("click", skiftBillede);
+			document.querySelector("#foto_2").addEventListener("click", skiftKategori);
+		}
+
+		function skiftBillede() {
+			randomTal = Math.round(Math.random() * 10)
+
+			let nytFoto = document.querySelector("#foto");
+
+			nytFoto.src = "https://placeimg.com/450/300/" + randomTal;
+		}
+
+		function skiftKategori() {
+			let foto = document.querySelector("#foto_2");
+
+			const kategori = ["animals", "arch", "people", "nature", "tech"];
+
+			const nummer = Math.round(Math.random() * 4);
+
+			foto.src = "http://placeimg.com/600/400/" + kategori[nummer];
+			foto.alt = kategori[nummer];
+		}
+
+	</script>
+</body>
+
+</html>
