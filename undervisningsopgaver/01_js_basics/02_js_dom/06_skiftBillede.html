@@ -117,11 +117,19 @@
 		}
 
 		function skiftBillede() {
-			document.querySelector("#foto").removeEventListener("click", skiftBillede);
+
+			randomTal = Math.round(Math.random() * 10)
+
+			let nytFoto = document.querySelector("#foto");
+
+			nytFoto.src = "https://placeimg.com/450/300/" + randomTal;
+
+			//EGET FORSØG, DER ERSTATTEDE MED ET ENKELT BILLEDE:
+			/*document.querySelector("#foto").removeEventListener("click", skiftBillede);
 
 			const foto = document.querySelector("#foto");
 			foto.src = "billeder/antoine-petitteville-skulptur-unsplash_1_1.jpg";
-			foto.alt = "Ny alt-tekst";
+			foto.alt = "Ny alt-tekst";*/
 		}
 
 	</script>
