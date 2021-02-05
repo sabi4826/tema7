@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>json øvelse 2</title>
+	<link rel="stylesheet" href="">
+</head>
+
+<body>
+	<main></main>
+	<template>
+		<article>
+			<h2></h2>
+			<p class="model"></p>
+			<p class="pris"></p>
+			<p class="købes"></p>
+		</article>
+	</template>
+
+	<script>
+		const fil = "json_array_2.json";
+
+		async function hentData(fil) {
+			const resultat = await fetch(fil);
+			const json = await resultat.json();
+			vis(json);
+		}
+
+		const main = document.querySelector("main");
+		const template = document.querySelector("template").content;
+
+		function vis(json) {
+			console.log(json);
+			//Loop
+			json.forEach(mærke => {
+				const klon = template.cloneNode(true);
+				klon.querySelector("h2").textContent = mærke.mærke;
+				klon.querySelector(".model").textContent = mærke.model;
+				klon.querySelector(".pris").textContent = mærke.pris;
+				klon.querySelector(".købes").textContent = mærke.købes;
+				main.appendChild(klon);
+			})
+		}
+
+		hentData(fil);
+	</script>
+</body></html>

@@ -1,0 +1,22 @@
+[
+	{
+		"mærke": "Benetton",
+		"model": "t-shirt",
+		"pris": "300",
+		"købes": ["HM", "Zara"]
+	},
+
+	{
+		"mærke": "Levis",
+		"model": "t-shirt",
+		"pris": "500",
+		"købes": ["Levis", "Zalando"]
+	},
+
+	{
+		"mærke": "Dilling",
+		"model": "t-shirt",
+		"pris": "250",
+		"købes": ["Dilling", "ResRes"]
+	}
+]
