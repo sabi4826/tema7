@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Restdb-øvelse med JSON</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		main {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+			grid-gap: 5px;
+			max-width: 1080px;
+			margin: 0 auto;
+		}
+
+		article {
+			border: double;
+			line-height: 0.65;
+		}
+
+		img {
+			width: 100%;
+			object-fit: contain;
+		}
+	</style>
+</head>
+
+<body>
+
+	<main>
+		<template>
+			<article>
+				<img src="" alt="" class="billede">
+				<h2 class="navn"></h2>
+				<p class="efternavn"></p>
+				<p class="titel"></p>
+			</article>
+		</template>
+	</main>
+
+	<script>
+		const url = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
+
+		const medieurl = "https://persongalleri-5d3e.restdb.io/media/";
+
+		const options = {
+			headers: {
+				'x-apikey': "600fe9211346a1524ff12e31"
+			}
+		};
+
+		async function hentData() {
+			const respons = await fetch(url, options);
+			const json = await respons.json();
+			vis(json);
+		}
+
+		const main = document.querySelector("main");
+		const template = document.querySelector("template").content;
+
+		function vis(json) {
+			console.log(json);
+			//loop alle personerne igennem
+			json.forEach(person => {
+				const klon = template.cloneNode(true);
+				klon.querySelector(".billede").src = medieurl + person.billede;
+				klon.querySelector(".navn").textContent = person.fornavn;
+				klon.querySelector(".efternavn").textContent = `Efternavn: ${person.efternavn}`;
+				klon.querySelector(".titel").textContent = `Titel: ${person.titel}`;
+
+				main.appendChild(klon);
+			})
+		}
+
+		hentData();
+	</script>
+</body></html>
