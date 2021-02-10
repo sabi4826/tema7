@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Babushka single view</title>
+	<style>
+		* {
+			font-size: 10px;
+		}
+
+		button {
+			font-size: 1.4rem;
+		}
+
+		h1,
+		h2 {
+			font-family: 'Stalinist One', cursive;
+		}
+
+		h1 {
+			font-size: 3rem;
+		}
+
+		h2 {
+			font-size: 2rem;
+		}
+
+		p {
+			font-family: 'Roboto', sans-serif;
+			font-size: 1.5rem;
+		}
+
+		img {
+			width: 100%;
+			margin-top: 20px;
+		}
+
+	</style>
+
+</head>
+
+<body>
+
+	<button>Tilbage til menu</button>
+
+	<article class="mad">
+		<img src="" alt="" class="billede">
+		<h2 class="navn"></h2>
+		<p class="pris"></p>
+		<p class="lang_beskrivelse"></p>
+		<p class="region"></p>
+	</article>
+
+	<script>
+		const urlParams = new URLSearchParams(window.location.search);
+		const id = urlParams.get("id");
+
+		let retter;
+		const medieurl = "https://babushka-dd8a.restdb.io/media/";
+		const myHeaders = {
+			"x-apikey": "600ec2fb1346a1524ff12de4"
+		}
+
+		console.log("ID", id);
+		document.addEventListener("DOMContentLoaded", loadJSON);
+
+		async function loadJSON() {
+			const JSONData = await fetch(`https://babushka-dd8a.restdb.io/rest/menu/${id}`, {
+				headers: myHeaders
+			});
+			retter = await JSONData.json();
+			console.log("ret", retter);
+			visRet(retter);
+		}
+
+		function visRet() {
+			document.querySelector(".billede").src = medieurl + retter.billede;
+			document.querySelector(".navn").textContent = retter.navn;
+			document.querySelector(".pris").textContent = `${"Pris: "}` + retter.pris + `${",-"}`;
+			document.querySelector(".region").textContent = `${"Oprindelsesregion: "}` + retter.oprindelsesregion + `${"."}`;
+			document.querySelector(".lang_beskrivelse").textContent = retter.langbeskrivelse;
+			document.querySelector("button").addEventListener("click", tilbageTilMenu);
+		}
+
+		function tilbageTilMenu() {
+			history.back();
+		}
+
+	</script>
+
+</body>
+
+</html>
