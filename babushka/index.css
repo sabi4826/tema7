@@ -1,0 +1,50 @@
+* {
+	font-size: 10px;
+}
+
+header nav {
+	display: inline-flex;
+	align-items: center;
+	background-color: #2C9413;
+}
+
+button {
+	font-size: 1.4rem;
+}
+
+h1,
+h2 {
+	font-family: 'Stalinist One', cursive;
+}
+
+h1 {
+	font-size: 3rem;
+}
+
+h2 {
+	font-size: 2rem;
+}
+
+p {
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.5rem;
+}
+
+img {
+	width: 100%;
+	margin-top: 20px;
+}
+
+#liste {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	grid-gap: 14px;
+	margin: 3px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.valgt {
+	background-color: deepskyblue;
+	font-size: 1.5rem;
+}
