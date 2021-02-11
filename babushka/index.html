@@ -10,12 +10,11 @@
 	<link href="https://fonts.googleapis.com/css2?family=Stalinist+One&display=swap" rel="stylesheet">
 	<title>Babushka-øvelse</title>
 	<link rel="stylesheet" href="index.css">
-
 </head>
 
 <body>
 	<header>
-		<h1>Alle</h1>
+		<h1>Bistro Babushka</h1>
 		<nav>
 			<button data-kategori="alle" class="valgt">Alle</button>
 			<button data-kategori="forretter">Forretter</button>
@@ -25,19 +24,29 @@
 	</header>
 
 	<section id="liste"></section>
+	<main>
+		<h1>Alle</h1>
 
-	<template>
-		<article class="mad">
-			<img src="" alt="" class="billede">
-			<h2 class="navn"></h2>
-			<p class="pris"></p>
-			<p class="kort_beskrivelse"></p>
-			<p class="region"></p>
-		</article>
-	</template>
+		<template>
+			<article class="mad">
+				<img src="" alt="" class="billede">
+				<h2 class="navn"></h2>
+				<p class="pris"></p>
+				<p class="kort_beskrivelse"></p>
+				<p class="region"></p>
+			</article>
+		</template>
+	</main>
+
+	<footer>
+		<p>Bistro Babushka, Ruslandsvej 28,
+			34529 København KW.
+		</p>
+		<p>Telefon: +45 245 845 963</p>
+	</footer>
 
 	<script>
-		const header = document.querySelector("header h1");
+		const header = document.querySelector("main h1");
 		const url = "https://babushka-dd8a.restdb.io/rest/menu";
 		const medieurl = "https://babushka-dd8a.restdb.io/media/";
 		const myHeaders = {
@@ -105,5 +114,8 @@
 		function singleView(hvad) {
 			location.href = `singleView.html?id=${hvad._id}`;
 		}
+
 	</script>
-</body></html>
+</body>
+
+</html>
