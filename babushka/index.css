@@ -6,7 +6,7 @@
 
 header {
 	background-color: #2C9413;
-	height: 110px;
+	height: 155px;
 	margin: 0;
 	margin-bottom: 5px;
 }
@@ -52,7 +52,7 @@ main h1 {
 }
 
 h2 {
-	font-size: 2rem;
+	font-size: 1.8rem;
 	text-shadow: 1px 1px #6CE04F;
 	margin-left: 3px;
 }
@@ -82,4 +82,5 @@ footer {
 	font-size: 1.5rem;
 	background-color: #2C9413;
 	padding-top: 15px;
+	margin-top: 8vw;
 }
